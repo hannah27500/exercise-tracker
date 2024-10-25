@@ -56,7 +56,12 @@ public class ExerciseTracker {
 	
 	public static void main(String[] args) {
 		ExerciseTracker tracker = new ExerciseTracker();
-		System.out.println(tracker.logAndCalcExercise("Running", 8));
+		tracker.logAndCalcExercise("Running", 8);
+		System.out.println(tracker.printLoggedExercises());
+		tracker.logAndCalcExercise("Walking", 20);
+		System.out.println(tracker.printLoggedExercises());
+		tracker.deleteExercise();
+		System.out.println(tracker.printLoggedExercises());
 		System.out.println(tracker.getExercises());
 	}
 	
