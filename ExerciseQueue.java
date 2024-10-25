@@ -1,10 +1,13 @@
+
 /** Creates a queue implementation using Linked List
  * @author Hannah Evans
  * @version 1.0
  * @since 1.0
 */
 
-import java.util.LinkedList
+
+import java.util.LinkedList;
+
 
 public class ExerciseQueue {
 	// Members
