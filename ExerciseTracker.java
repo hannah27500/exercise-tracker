@@ -78,18 +78,4 @@ public class ExerciseTracker {
         }
         return 0; // Return 0 if the exercise is not found
     }
-	
-	public static void main(String[] args) {
-		ExerciseTracker tracker = new ExerciseTracker();
-		tracker.logAndCalcExercise("Running", 8);
-		System.out.println(tracker.printLoggedExercises());
-		tracker.logAndCalcExercise("Walking", 20);
-		System.out.println(tracker.printLoggedExercises());
-		tracker.deleteExercise();
-		System.out.println(tracker.printLoggedExercises());
-		System.out.println(tracker.getExercises());
-	}
-	
-	
-
 }
