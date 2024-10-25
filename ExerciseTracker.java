@@ -2,7 +2,7 @@
 
 public class ExerciseTracker {
 	
-//	private Queue performedExercise;
+
 	private LinkedList exercises;
 	private ExerciseQueue performedExercises;
 
@@ -38,9 +38,34 @@ public class ExerciseTracker {
 	public void deleteExercise() {
 		performedExercises.dequeue();
 	}
-	public String printLoggedExercises() {
-		return performedExercises.printQueue();
-	}
+	 public String printAllExercises() {
+		 StringBuilder result = new StringBuilder();
+		    if (performedExercises.isEmpty()) {
+		        return "";
+		    }
+
+		    // Store current size to restore queue after processing
+		    int size = performedExercises.size();
+
+		    for (int i = 0; i < size; i++) {
+		        Node current = performedExercises.dequeue(); // Get and remove the head of the queue
+
+		        // Calculate calories for the current exercise
+		        int calories = getCaloriesPerMin(current.getExerciseName());
+		        int totalCalories = calories * current.getMinutes();
+
+		        // Append to the result
+		        result.append("Exercise: ").append(current.getExerciseName())
+		              .append(", Minutes: ").append(current.getMinutes())
+		              .append(", Calories Burned: ").append(totalCalories)
+		              .append("\n");
+
+		        // Re-enqueue the exercise to maintain original state
+		        performedExercises.enqueue(current); // Restore the exercise back into the queue
+		    }
+
+		    return result.toString();
+		}
 	
 	private int getCaloriesPerMin(String exerciseName) {
         Node current = exercises.get(0); // Accessing head of the linked list
