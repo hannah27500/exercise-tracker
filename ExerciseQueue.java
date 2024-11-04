@@ -18,14 +18,6 @@ public class ExerciseQueue {
 	}
 
 
-
-	/**
-	 * @return If queue is full
-	 */
-	public boolean isFull() {
-		return false;
-	}
-
 	/**
 	 * @return If queue is empty
 	 */
@@ -49,8 +41,7 @@ public class ExerciseQueue {
 		return qList.peekFirst();
 		}
 		else {
-			// TO DO THROW EXCEPTION
-			return null;
+			throw new QueueEmptyException("Queue is empty.");
 		}
 	}
 
@@ -63,8 +54,7 @@ public class ExerciseQueue {
 			Node itemRemoved = qList.removeFirst();
 			return itemRemoved;
 		} else {
-			// TO DO THROW EXCEPTION
-			return null;
+			throw new QueueEmptyException("Queue is empty.");
 		}
 	}
 
@@ -90,21 +80,7 @@ public class ExerciseQueue {
             }
 			return printString;
 		} else {
-			// TO DO THROW EXCEPTION 
-			return "";
+			throw new QueueEmptyException("Queue is empty");
 		}
-	}
-	
-	public static void main(String[] args) {
-		Node biking = new Node("biking",35);
-		Node walking = new Node("walking",24);
-		Node running = new Node("running",13);
-		ExerciseQueue e = new ExerciseQueue();
-		e.enqueue(biking);
-		System.out.println(e.printQueue());
-		e.enqueue(walking);
-		System.out.println(e.printQueue());
-		e.dequeue();
-		System.out.println(e.printQueue());
 	}
 }
