@@ -23,10 +23,6 @@ public class ExerciseTracker {
 	}
 
 
-	public void setExercises(LinkedList exercises) {
-		this.exercises = exercises;
-	}
-
 	public String logAndCalcExercise(String exerciseName,int minutesExercised) {
 		Node newExercise = new Node(exerciseName,minutesExercised);
 		performedExercises.enqueue(newExercise);
