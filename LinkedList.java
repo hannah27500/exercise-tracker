@@ -102,7 +102,7 @@ public class LinkedList {
 				head = null;
 			}
 		} else {
-			throw new ListEmptyException();
+			throw new ListEmptyException("List is empty.");
 		}
 	}
 	
