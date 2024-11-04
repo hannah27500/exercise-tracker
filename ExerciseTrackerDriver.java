@@ -4,16 +4,21 @@ public class ExerciseTrackerDriver {
 
 	public static void main(String[] args) {
 		
-		ExerciseTracker tracker = new ExerciseTracker();
+	ExerciseTracker tracker = new ExerciseTracker();
 		System.out.println(tracker.getExercises());
 		
 		
-		String calories = tracker.logAndCalcExercise("biking",10);
-		
+		tracker.logAndCalcExercise("Running", 8);
+		System.out.println("RUNNING EXERCISE");
 		System.out.println(tracker.printAllExercises());
-		tracker.logAndCalcExercise("walking",24);
+
+		System.out.println("RUNNING & WALKING EXERCISE");
+		tracker.logAndCalcExercise("Walking", 24);
+
 		System.out.println(tracker.printAllExercises());
 		tracker.deleteExercise();
+
+		System.out.println("DELETE RUNNING EXERCISE");
 		System.out.println(tracker.printAllExercises());
 
 	}
