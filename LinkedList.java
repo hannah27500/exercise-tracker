@@ -1,4 +1,4 @@
-
+package model;
 /** This class has methods to represent a linked list
  * @author Hannah Evans
  * @version 1.0
@@ -104,6 +104,40 @@ public class LinkedList {
 		} else {
 			throw new ListEmptyException("List is empty.");
 		}
+	}
+	
+	public void selectionSortAlgorithm() {
+	    Node current = head;
+
+	    
+	    while (current != null) {
+	        Node first = current;  
+	        Node next = current.getNext();
+
+	        
+	        while (next != null) {
+	            // checks if next comes before the current first alphabetically and if does then next becomes the new first
+	            if (next.getExerciseName().compareToIgnoreCase(first.getExerciseName()) < 0) {
+	                first = next;  // Found a new minNode
+	            }
+	            next = next.getNext();
+	        }
+
+	        // if the one that should be first is not the current node then nodes are swapped
+	        if (first != current) {
+	            String tempExercise = current.getExerciseName();
+	            int tempMinutes = current.getMinutes();
+	            
+	            current.setExerciseName(first.getExerciseName());
+	            current.setMinutes(first.getMinutes());
+	            
+	            first.setExerciseName(tempExercise);
+	            first.setMinutes(tempMinutes);
+	        }
+
+	        // Move to the next node in the list
+	        current = current.getNext();
+	    }
 	}
 	
 
