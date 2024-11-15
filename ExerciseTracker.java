@@ -1,9 +1,12 @@
+package model;
 
+
+import java.util.Arrays;
 
 public class ExerciseTracker {
 	
-
-	private LinkedList exercises;
+//	private Queue performedExercise;
+	public LinkedList exercises;
 	private ExerciseQueue performedExercises;
 
 	public ExerciseTracker() {
@@ -15,13 +18,21 @@ public class ExerciseTracker {
 		exercises.insertLast("Swimming", 8);
 		exercises.insertLast("Walking", 4);
 		exercises.insertLast("Strength Training", 7);	
+		
 	}
 	
+	public String[] getExercisesList() { 
+		exercises.selectionSortAlgorithm();
+		String[] exerciseNames = new String[exercises.size()];
+        for (int i = 0; i < exercises.size(); i++) {
+            exerciseNames[i] = exercises.get(i).exerciseName;
+        }
+        return exerciseNames;
+    }
 	
 	public String getExercises() {
 		return exercises.print();
 	}
-
 
 	public String logAndCalcExercise(String exerciseName,int minutesExercised) {
 		Node newExercise = new Node(exerciseName,minutesExercised);
@@ -34,6 +45,8 @@ public class ExerciseTracker {
 	public void deleteExercise() {
 		performedExercises.dequeue();
 	}
+
+	
 	 public String printAllExercises() {
 		 StringBuilder result = new StringBuilder();
 		    if (performedExercises.isEmpty()) {
@@ -63,7 +76,7 @@ public class ExerciseTracker {
 		    return result.toString();
 		}
 	
-	private int getCaloriesPerMin(String exerciseName) {
+	public int getCaloriesPerMin(String exerciseName) {
         Node current = exercises.get(0); // Accessing head of the linked list
         while (current != null) {	
             if (current.getExerciseName().equalsIgnoreCase(exerciseName)) {
@@ -74,4 +87,8 @@ public class ExerciseTracker {
         }
         return 0; // Return 0 if the exercise is not found
     }
+	
+
+	
+
 }
