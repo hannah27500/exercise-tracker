@@ -11,6 +11,23 @@ import model.Node;
 import model.QueueEmptyException;
 
 class LinkedListTest {
+	
+	
+	@Test 
+	void testSelectionSortAlgorithm() {
+		LinkedList newList = new LinkedList();
+		newList.insertLast("pilates",6);
+		newList.insertLast("swimming",5);
+		newList.insertLast("dancing",5);
+		newList.insertLast("running",9);
+		
+		String expected = "{\n" + "Exercise: dancing Calories Per Minute: 5,\n" +
+				"Exercise: pilates Calories Per Minute: 6,\n" + 
+				"Exercise: running Calories Per Minute: 9,\n"+
+				"Exercise: swimming Calories Per Minute: 5\n"+"}";
+		newList.selectionSortAlgorithm();
+		assertEquals(expected, newList.print());
+	}
 
 	@Test
 	void testIsEmpty() {
