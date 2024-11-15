@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import model.ExerciseTracker;
@@ -10,6 +12,15 @@ import model.QueueEmptyException;
 
 class ExerciseTrackerTest {
 
+	@Test
+	void testGetExercisesList() {
+		// tests printing out all the current exercises
+		ExerciseTracker trackerTest = new ExerciseTracker();
+		String expected = "[Biking, Running, Strength Training, Swimming, Walking]";
+		String actual = Arrays.toString(trackerTest.getExercisesList());
+		assertEquals(expected, actual);
+	}
+	
 	@Test
 	void testGetExercises() {
 		// tests printing out all the current exercises
