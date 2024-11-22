@@ -1,16 +1,16 @@
 
-/** Creates a queue implementation using Linked List
+/** Creates a queue implementation of a queue for an exercise tracker
  * @author Hannah Evans
  * @version 1.0
  * @since 1.0
 */
-
+package model;
 
 import java.util.LinkedList;
 
 
 public class ExerciseQueue {
-	// Members
+	// linked list of the node class to hold queue data
 	private LinkedList<Node> qList;
 
 	public ExerciseQueue() {
@@ -18,25 +18,20 @@ public class ExerciseQueue {
 	}
 
 
-	/**
-	 * @return If queue is empty
-	 */
+
+	
 	public boolean isEmpty() {
+		// if size 0 is empty
 		return qList.size() == 0;
 	}
 
-	/**
-	 * @return Returns number of elements in the queue
-	 */
 	public int size() {
 		return qList.size();
 	}
 
-	/**
-	 * @return Returns element at head of queue
-	 * @throws StackEmptyException //
-	 */
+
 	public Node peek() {
+		// returns first node item
 		if (!qList.isEmpty()) {
 		return qList.peekFirst();
 		}
@@ -45,40 +40,32 @@ public class ExerciseQueue {
 		}
 	}
 
-	/**
-	 * @return Removes and returns element at head of queue
-	 * @throws QueueEmptyException
-	 */
+
 	public Node dequeue()  {
+		// removes item and returns it if not empty
 		if (!qList.isEmpty()) {
 			Node itemRemoved = qList.removeFirst();
 			return itemRemoved;
 		} else {
-			throw new QueueEmptyException("Queue is empty.");
+			throw new QueueEmptyException("Queue is empty");
 		}
 	}
 
-	/**
-	 * Adds item to tail of the queue
-	 * 
-	 * @param item
-	 */
+	
 	public void enqueue(Node item)  {
+		// adds item to end of queue
 		qList.addLast(item);
 	}
 
-	/**
-	 * @return Returns list of queue items from head to tail one per line (eg Item1
-	 *         Item2 Item3 ...) if queue is empty returns "Queue is Empty"
-	 */
+	
 	public String printQueue()  {
-		
+		// prints out structure of the queue
 		if (!qList.isEmpty()) {
-			String printString = "";
+			StringBuilder sb = new StringBuilder();
 			for (Node item : qList) {
-                printString+= item.getData() +"    ";
+                sb.append(item.getData() +"\n");
             }
-			return printString;
+			return sb.toString();
 		} else {
 			throw new QueueEmptyException("Queue is empty");
 		}
