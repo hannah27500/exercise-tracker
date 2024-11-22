@@ -30,6 +30,7 @@ public class Node {
 	}
 
 	public void setMinutes(int minutes) {
+		// set minutes
 		this.minutes = minutes;
 	}
 
@@ -42,6 +43,7 @@ public class Node {
 	}
 
 public String getData() {
+	// returns string of the data stored
 	return "Exercise: "+exerciseName + " Calories Per Minute: "+minutes;
 }
 
