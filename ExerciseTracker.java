@@ -35,9 +35,13 @@ public class ExerciseTracker {
 	}
 
 	public String logAndCalcExercise(String exerciseName,int minutesExercised) {
+		// creates new node item with exercise name and minutes passed in
 		Node newExercise = new Node(exerciseName,minutesExercised);
+		// adds node to the queue
 		performedExercises.enqueue(newExercise);
+		// get calories per minutes from linked list using exercise name
 		int calories = getCaloriesPerMin(exerciseName);
+		// multiply calories times minutes for total calories burned
 		int totalCalories = calories * minutesExercised;
 		return "Exercise: "+ exerciseName + " Minutes: "+minutesExercised + " Calories Burned: "+totalCalories;
 	}
@@ -69,7 +73,7 @@ public class ExerciseTracker {
 		              .append(", Calories Burned: ").append(totalCalories)
 		              .append("\n");
 
-		        // Re-enqueue the exercise to maintain original state
+		        // Re add the exercise to maintain original state
 		        performedExercises.enqueue(current); // Restore the exercise back into the queue
 		    }
 
@@ -79,8 +83,9 @@ public class ExerciseTracker {
 	public int getCaloriesPerMin(String exerciseName) {
         Node current = exercises.get(0); // Accessing head of the linked list
         while (current != null) {	
+		// finds exercise name that matches and returns those calories per minute
             if (current.getExerciseName().equalsIgnoreCase(exerciseName)) {
-                return current.getMinutes(); // Assuming minutes represent calories per minute
+                return current.getMinutes();
                 
             }
             current = current.getNext();
