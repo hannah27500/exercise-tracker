@@ -1,3 +1,8 @@
+/** Tests for queue of logged exercises
+ * @author Hannah Evans
+ * @version 1.0
+ * @since 1.0
+*/
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,187 +15,147 @@ import model.QueueEmptyException;
 
 class ExerciseQueueTest {
 
-	@Test
-	void testCreateQueue() {
-		// ARRANGE
-		ExerciseQueue myQueue = new ExerciseQueue();
-		boolean actual;
-		// ACT
-		actual = myQueue.isEmpty();
-		// ASSERT
-		assertTrue(actual);
-	}
+
 
 	@Test
 	void testIsEmptyTrue() {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
 		boolean actual;
-		// ACT
 		actual = myQueue.isEmpty();
-		// ASSERT
+		// tests if queue empty when created
 		assertTrue(actual);
 	}
 
 	@Test
 	void testIsEmptyFalse() {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item = new Node("walking",35);
+		Node item = new Node("walking", 35);
 		boolean actual;
-		// ACT
+		// adds node item and tests to see if NOT empty
 		myQueue.enqueue(item);
 		actual = myQueue.isEmpty();
-		// ASSERT
 		assertFalse(actual);
 	}
 
-
 	@Test
 	void testEnqueue() {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item = new Node("running",15);
+		Node item = new Node("running", 15);
 		Node actual;
-		Node expected =item;
-		// ACT
+		Node expected = item;
+		// tests adding a node item
 		myQueue.enqueue(item);
 		actual = myQueue.peek();
-		// ASSERT
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	void testEnqueueDequeue() throws QueueEmptyException {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item1 = new Node("strength training",52);
+		Node item1 = new Node("strength training", 52);
 		Node item2 = new Node("Swimming", 28);
 		Node actual, expected;
 		expected = item2;
-		// ACT
+		// adds 2 items and removes one
 		myQueue.enqueue(item1);
 		myQueue.enqueue(item2);
 		myQueue.dequeue();
-			
-		actual = myQueue.peek();
-		// ASSERT
-		assertEquals(expected, actual);
-	}	
 
+		actual = myQueue.peek();
+		// item 2 should be on top because item 1 removed 1st
+		assertEquals(expected, actual);
+	}
 
 	@Test
 	void testDequeue() throws QueueEmptyException {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item1 = new Node("strength training",52);
+		Node item1 = new Node("strength training", 52);
 		Node item2 = new Node("BIKING", 28);
 		Node item3 = new Node("Running", 8);
-		
+
 		Node actual, expected;
 		expected = item2;
-		
+		// adds and deletes item to test
 		myQueue.enqueue(item1);
 		myQueue.dequeue();
 		myQueue.enqueue(item2);
 		myQueue.enqueue(item3);
-		
-		// ACT
 		actual = myQueue.dequeue();
-		// ASSERT
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	void testDequeueEmptyQueue() {
-		// ARRANGE
-		ExerciseQueue myQueue = new ExerciseQueue();
-		// ACT
-		// ASSERT
-		assertThrows(QueueEmptyException.class, () -> myQueue.dequeue());
-	}
-	
-	@Test
-	void testSizeZero() {
-		// ARRANGE
-		ExerciseQueue myQueue = new ExerciseQueue();
-		int actual, expected;
-		expected = 0;
-		// ACT
-		actual = myQueue.size();
-		// ASSERT
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	void testSizeNonZero() throws  QueueEmptyException {
-		// ARRANGE
+	void testDequeueEmptyQueue() {
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item1 = new Node("swimming",41);
+		assertThrows(QueueEmptyException.class, () -> myQueue.dequeue());
+	}
+
+	@Test
+	void testSizeZero() {
+		ExerciseQueue myQueue = new ExerciseQueue();
+		int actual, expected;
+		expected = 0;
+		// tests if size 0 when create
+		actual = myQueue.size();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void testSizeNonZero() throws QueueEmptyException {
+		ExerciseQueue myQueue = new ExerciseQueue();
+		Node item1 = new Node("swimming", 41);
 		Node item2 = new Node("walking", 80);
 		Node item3 = new Node("running", 25);
-		
+
 		int actual, expected;
 		expected = 2;
-		// ACT
+		// adds 3 and delete one for size of 2
 		myQueue.enqueue(item1);
 		myQueue.enqueue(item2);
 		myQueue.enqueue(item3);
 		myQueue.dequeue();
 		actual = myQueue.size();
-		// ASSERT
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	void testPeek() throws QueueEmptyException {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item1 = new Node("STRENGTH TRAINING",64);
-		
+		Node item1 = new Node("STRENGTH TRAINING", 64);
 		Node actual, expected;
-		// ACT
+		// item 1 is added so should be 1st
 		myQueue.enqueue(item1);
 		expected = item1;
 		actual = myQueue.peek();
-		// ASSERT
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	void testPeekEmptyQueue() {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		// ACT
-		// ASSERT
+		// when peek and empty throws error
 		assertThrows(QueueEmptyException.class, () -> myQueue.peek());
 	}
-	
+
 	@Test
 	void testPrintQueueEmptyQueue() {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		// ACT
-		// ASSERT
+		// when print empty throws error
 		assertThrows(QueueEmptyException.class, () -> myQueue.printQueue());
 	}
-	
+
 	@Test
 	void testPrintQueue() throws QueueEmptyException {
-		// ARRANGE
 		ExerciseQueue myQueue = new ExerciseQueue();
-		Node item1 = new Node("biking",17);
+		Node item1 = new Node("biking", 17);
 		Node item2 = new Node("walking", 34);
 		String actual, expected;
 		expected = "Exercise: biking Calories Per Minute: 17\nExercise: walking Calories Per Minute: 34\n";
-		// ACT
+		// tests printing result
 		myQueue.enqueue(item1);
 		myQueue.enqueue(item2);
 		actual = myQueue.printQueue();
-		// ASSERT
 		assertEquals(expected, actual);
 	}
-
-
 
 }
