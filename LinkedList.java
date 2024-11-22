@@ -6,18 +6,15 @@ package model;
 */
 
 public class LinkedList {
-	// Attributes
 	private int size;
 	private Node head;
 
-	// Constructor
 	public LinkedList() {
 		this.size = 0;
 		this.head = null;
 
 	}
 
-	// Methods
 
 	public boolean isEmpty() {
 		// returns true if size is 0
@@ -109,7 +106,7 @@ public class LinkedList {
 	public void selectionSortAlgorithm() {
 	    Node current = head;
 
-	    
+	    // goes through each item in the list
 	    while (current != null) {
 	        Node first = current;  
 	        Node next = current.getNext();
@@ -123,19 +120,19 @@ public class LinkedList {
 	            next = next.getNext();
 	        }
 
-	        // if the one that should be first is not the current node then nodes are swapped
+	        // swaps them if current is not already first
 	        if (first != current) {
 	            String tempExercise = current.getExerciseName();
 	            int tempMinutes = current.getMinutes();
-	            
+	            // sets currents exercise name and minutes to the first ones
 	            current.setExerciseName(first.getExerciseName());
 	            current.setMinutes(first.getMinutes());
-	            
+	            // sets the first ones to the temporarily stored ones
 	            first.setExerciseName(tempExercise);
 	            first.setMinutes(tempMinutes);
 	        }
 
-	        // Move to the next node in the list
+	        // go to the next one
 	        current = current.getNext();
 	    }
 	}
