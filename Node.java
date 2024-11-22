@@ -1,4 +1,4 @@
-
+package model;
 /** The node class to keep track of links of the list
  * @author Hannah Evans
  * @version 1.0
