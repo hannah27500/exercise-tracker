@@ -1,3 +1,8 @@
+/** This class keeps track of the linked list of exercises and queue of performed exercises and also calculates calories per minute and displays the queue to show exercises perfromed
+ * @author Hannah Evans
+ * @version 1.0
+ * @since 1.0
+*/
 package model;
 
 
