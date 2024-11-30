@@ -1,3 +1,8 @@
+/** Tests for exercise tracker
+ * @author Hannah Evans
+ * @version 1.0
+ * @since 1.0
+*/
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
